@@ -1,0 +1,80 @@
+style(lang="scss").
+  @page {
+    margin: 1cm 0 2cm 0cm;
+    @bottom-center {
+      content: "";
+    }
+  }
+
+img(style="width:150px; display:block; margin:0 auto;"
+    src="https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_claro.png")
+
+
+
+img(style="width:150px; display:block; margin:0 auto;"    
+    src="https://github.com/leonardosvalerio/img/blob/main/Novo.LogoV2%20(1).png?raw=true")
+
+
+
+#sidebar: p Atualizado por Leonardo Santos - {{ hoje }}
+
+
+h1 Relatório de Controle de Abacates
+
+.ui.piled.segment: p.
+  Este relatório é parte de um exercício prático da Semana Python, evento online gratuito do
+  #[a(href='https://sigmoidal.ai') Sigmoidal], e tem a finalidade de divulgar e promover 
+  Python e Data Science no Brasil.
+
+
+:markdown
+  ***Gerado automaticamente e conferido pelo analista Carlos Melo.***
+  
+  ***Estudado por Leonardo Santos.***
+  
+  ```
+  controle_abacates Data: {{ hoje }}
+  ```
+  
+  Para maiores informações sobre o autor da Semana Python, acesso o [perfil do LinkedIn](http://linkedin.com/in/carlosfab/) 
+  e siga o [canal do Youtube](http://youtube.com/c/carlosmelosigmoidal) para acompanhar os últimos 
+  artigos e tutoriais relacionados a Python e Data Science. Obrigado pela participação no evento.
+  Junto siga o reconferidor no [perfil do LinkedIn](https://linkedin.com/in/leonardosantosvalerio/) e
+  seu [portfolio](https://www.leonardosvalerio.com). 
+
+  
+.ui.container
+  .ui.icon.message.yellow.block-center
+    i.exclamation.circle.icon
+    .content
+      .header Informações atualizadas do último dia.
+      p.
+        Os últimos lançamentos deste relatório dizem respeito ao dia 
+        {{ planilha.iloc[-1].data.day }}/{{ planilha.iloc[-1].data.month}}/{{ planilha.iloc[-1].data.year}}, 
+        onde o preço médio do abacate foi R$ {{ planilha.iloc[-1].preco_medio }} e o volume total de vendas foi 
+        de {{ planilha.iloc[-1].volume_total }} kg.
+
+
+:markdown
+  ##  Informações Atualizadas
+  
+  Até o presente momento, o relatório considera {{ planilha.shape[0] }} entradas. 
+  O povo está feliz tem futebol com a ferroviária da morada do sol. 
+  Avinhado na camisa que emoção salve ferroviária do meu coração. 
+  Ferroviária, amo você em qualquer hora e tempo seu lema é vencer.:
+
+
+center
+  - var figure = planilha.plot("data", "preco_medio")
+  img(src="{{ pdf_tools.figure_data(figure, (8, 8)) }}")
+
+:markdown
+  ### Últimos lançamentos
+  
+  O povo está feliz tem futebol com a ferroviária da morada do sol. 
+  Avinhado na camisa que emoção salve ferroviária do meu coração. 
+
+
+{{ pdf_tools.dataframe_to_html(planilha.iloc[-7:]) }}
+
+p.main-paragraph Foi um prazer ter você durante a Semana Python.
